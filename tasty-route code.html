@@ -3,780 +3,690 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Tasty Route – Pure Veg Restaurant, Himayatnagar</title>
-<link href="https://fonts.googleapis.com/css2?family=Boogaloo&family=Nunito:wght@400;600;700;800&display=swap" rel="stylesheet">
+<title>Tasty Route – A Place To Eat</title>
+<link href="https://fonts.googleapis.com/css2?family=Baloo+2:wght@400;600;700;800&family=Nunito:wght@300;400;600;700&display=swap" rel="stylesheet">
 <style>
   :root {
-    --orange: #FF6B2B;
-    --orange-light: #FF9A5C;
-    --yellow: #FFD93D;
-    --yellow-light: #FFF3B0;
-    --green: #4CAF50;
-    --green-dark: #2E7D32;
-    --earth: #8D6E63;
+    --orange: #FF6B2C;
+    --orange-light: #FF8F5E;
+    --orange-deep: #E55A1E;
+    --yellow: #FFD23F;
+    --yellow-light: #FFF3C4;
+    --green: #4A7C59;
+    --green-light: #7AB648;
+    --green-pale: #EEF7E6;
     --cream: #FFF8F0;
-    --dark: #1A1A1A;
-    --mid: #444;
-    --light-border: #FFE0C0;
+    --brown: #5C3A1E;
+    --text: #2D1A0E;
+    --text-muted: #7A5C44;
+    --white: #FFFFFF;
+    --card-bg: #FFFDF9;
+    --border: rgba(255,107,44,0.15);
+    --shadow: 0 4px 24px rgba(255,107,44,0.12);
+    --shadow-lg: 0 12px 48px rgba(255,107,44,0.18);
+    --radius: 16px;
+    --radius-sm: 10px;
   }
-
   * { margin: 0; padding: 0; box-sizing: border-box; }
-
   html { scroll-behavior: smooth; }
-
   body {
     font-family: 'Nunito', sans-serif;
     background: var(--cream);
-    color: var(--dark);
+    color: var(--text);
     overflow-x: hidden;
   }
 
-  /* ─── NAV ─── */
+  /* NAV */
   nav {
-    position: fixed; top: 0; width: 100%; z-index: 999;
-    background: rgba(255,248,240,0.97);
-    backdrop-filter: blur(10px);
-    border-bottom: 2px solid var(--light-border);
+    position: fixed; top: 0; left: 0; right: 0; z-index: 100;
+    background: rgba(255,248,240,0.96);
+    backdrop-filter: blur(12px);
+    border-bottom: 1.5px solid var(--border);
     padding: 0 5%;
     display: flex; align-items: center; justify-content: space-between;
-    height: 70px;
-    box-shadow: 0 2px 20px rgba(255,107,43,0.1);
+    height: 68px;
+    transition: box-shadow .3s;
   }
-
+  nav.scrolled { box-shadow: 0 4px 32px rgba(255,107,44,0.1); }
   .nav-logo {
-    font-family: 'Boogaloo', cursive;
-    font-size: 1.8rem;
+    font-family: 'Baloo 2', cursive;
+    font-size: 1.6rem; font-weight: 800;
     color: var(--orange);
     display: flex; align-items: center; gap: 8px;
     text-decoration: none;
   }
-
-  .nav-logo span { color: var(--green-dark); }
-
-  .nav-links {
-    display: flex; gap: 2rem; list-style: none; align-items: center;
-  }
-
-  .nav-links a {
-    text-decoration: none;
-    color: var(--mid);
-    font-weight: 700;
-    font-size: 0.95rem;
-    letter-spacing: 0.3px;
-    transition: color 0.2s;
-    position: relative;
-  }
-
-  .nav-links a::after {
-    content: '';
-    position: absolute; bottom: -4px; left: 0;
-    width: 0; height: 3px;
+  .nav-logo span { color: var(--green); }
+  .logo-icon {
+    width: 36px; height: 36px;
     background: var(--orange);
-    border-radius: 2px;
-    transition: width 0.25s;
-  }
-
-  .nav-links a:hover { color: var(--orange); }
-  .nav-links a:hover::after { width: 100%; }
-
-  .nav-cta {
-    background: var(--orange);
-    color: #fff !important;
-    padding: 0.45rem 1.2rem;
-    border-radius: 30px;
-    transition: background 0.2s, transform 0.15s !important;
-  }
-
-  .nav-cta:hover { background: #e5521a !important; transform: scale(1.04); }
-  .nav-cta::after { display: none !important; }
-
-  /* ─── HERO ─── */
-  #home {
-    min-height: 100vh;
-    padding-top: 70px;
-    background: linear-gradient(135deg, #FFF3E0 0%, #FFF8F0 50%, #F1F8E9 100%);
-    position: relative;
-    overflow: hidden;
-    display: flex; align-items: center;
-  }
-
-  .hero-bg-circles {
-    position: absolute; inset: 0; pointer-events: none;
-  }
-
-  .circle {
-    position: absolute; border-radius: 50%;
-    opacity: 0.12;
-  }
-
-  .c1 { width: 500px; height: 500px; background: var(--orange); top: -150px; right: -100px; }
-  .c2 { width: 300px; height: 300px; background: var(--yellow); bottom: -50px; left: -80px; }
-  .c3 { width: 180px; height: 180px; background: var(--green); top: 200px; left: 30%; }
-
-  .hero-inner {
-    max-width: 1200px;
-    margin: 0 auto;
-    padding: 4rem 5%;
-    display: grid;
-    grid-template-columns: 1fr 1fr;
-    align-items: center;
-    gap: 3rem;
-    position: relative; z-index: 2;
-  }
-
-  .hero-badge {
-    display: inline-flex; align-items: center; gap: 6px;
-    background: var(--green);
-    color: #fff;
-    font-weight: 800;
-    font-size: 0.8rem;
-    padding: 5px 14px;
-    border-radius: 20px;
-    text-transform: uppercase;
-    letter-spacing: 1px;
-    margin-bottom: 1rem;
-    animation: fadeUp 0.6s ease both;
-  }
-
-  .hero-title {
-    font-family: 'Boogaloo', cursive;
-    font-size: clamp(2.8rem, 5vw, 4.2rem);
-    line-height: 1.1;
-    color: var(--dark);
-    animation: fadeUp 0.7s ease 0.1s both;
-  }
-
-  .hero-title .highlight {
-    color: var(--orange);
-    position: relative;
-  }
-
-  .hero-title .highlight::after {
-    content: '';
-    position: absolute;
-    bottom: 4px; left: 0;
-    width: 100%; height: 8px;
-    background: var(--yellow);
-    z-index: -1;
-    border-radius: 4px;
-  }
-
-  .hero-sub {
-    margin: 1.2rem 0 2rem;
-    font-size: 1.1rem;
-    color: var(--mid);
-    line-height: 1.6;
-    animation: fadeUp 0.7s ease 0.2s both;
-  }
-
-  .hero-pills {
-    display: flex; gap: 0.8rem; flex-wrap: wrap;
-    margin-bottom: 2.2rem;
-    animation: fadeUp 0.7s ease 0.3s both;
-  }
-
-  .pill {
-    background: #fff;
-    border: 2px solid var(--light-border);
-    border-radius: 20px;
-    padding: 5px 14px;
-    font-size: 0.85rem;
-    font-weight: 700;
-    color: var(--earth);
-    display: flex; align-items: center; gap: 5px;
-  }
-
-  .hero-ctas {
-    display: flex; gap: 1rem; flex-wrap: wrap;
-    animation: fadeUp 0.7s ease 0.4s both;
-  }
-
-  .btn-primary {
-    background: var(--orange);
-    color: #fff;
-    padding: 0.85rem 2rem;
-    border-radius: 40px;
-    font-weight: 800;
-    font-size: 1rem;
-    text-decoration: none;
-    display: inline-flex; align-items: center; gap: 8px;
-    transition: transform 0.2s, box-shadow 0.2s;
-    box-shadow: 0 8px 24px rgba(255,107,43,0.35);
-  }
-
-  .btn-primary:hover { transform: translateY(-3px); box-shadow: 0 12px 32px rgba(255,107,43,0.45); }
-
-  .btn-secondary {
-    background: #fff;
-    color: var(--orange);
-    padding: 0.85rem 2rem;
-    border-radius: 40px;
-    font-weight: 800;
-    font-size: 1rem;
-    text-decoration: none;
-    display: inline-flex; align-items: center; gap: 8px;
-    border: 2px solid var(--orange);
-    transition: transform 0.2s, background 0.2s;
-  }
-
-  .btn-secondary:hover { transform: translateY(-3px); background: #fff7f3; }
-
-  .hero-visual {
-    position: relative;
-    display: flex; justify-content: center; align-items: center;
-    animation: fadeIn 0.9s ease 0.3s both;
-  }
-
-  .hero-plate {
-    width: 380px; height: 380px;
-    background: radial-gradient(circle at 40% 40%, #FFF3E0, #FFD9B0);
-    border-radius: 50%;
-    display: flex; justify-content: center; align-items: center;
-    font-size: 9rem;
-    box-shadow: 0 20px 60px rgba(255,107,43,0.2), inset 0 -10px 30px rgba(255,150,50,0.1);
-    position: relative;
-    animation: float 4s ease-in-out infinite;
-  }
-
-  .float-item {
-    position: absolute;
     border-radius: 50%;
     display: flex; align-items: center; justify-content: center;
-    font-size: 2rem;
-    box-shadow: 0 6px 20px rgba(0,0,0,0.1);
-    animation: orbit 6s linear infinite;
+    font-size: 18px;
   }
+  .nav-links {
+    display: flex; gap: 32px; list-style: none;
+  }
+  .nav-links a {
+    font-weight: 600; font-size: .95rem;
+    color: var(--text-muted); text-decoration: none;
+    transition: color .2s;
+    position: relative;
+  }
+  .nav-links a::after {
+    content: ''; position: absolute; bottom: -4px; left: 0; right: 0;
+    height: 2px; background: var(--orange);
+    transform: scaleX(0); transition: transform .2s;
+    border-radius: 2px;
+  }
+  .nav-links a:hover { color: var(--orange); }
+  .nav-links a:hover::after { transform: scaleX(1); }
+  .nav-cta {
+    background: var(--orange); color: #fff;
+    padding: 9px 22px; border-radius: 999px;
+    font-weight: 700; font-size: .9rem;
+    text-decoration: none;
+    transition: background .2s, transform .15s;
+    box-shadow: 0 2px 12px rgba(255,107,44,0.3);
+  }
+  .nav-cta:hover { background: var(--orange-deep); transform: translateY(-1px); }
+  .hamburger { display: none; flex-direction: column; gap: 5px; cursor: pointer; }
+  .hamburger span { width: 24px; height: 2px; background: var(--orange); border-radius: 2px; transition: .3s; }
+  .mobile-menu {
+    display: none;
+    position: fixed; top: 68px; left: 0; right: 0;
+    background: var(--cream);
+    border-bottom: 1.5px solid var(--border);
+    padding: 20px 5%;
+    flex-direction: column; gap: 16px;
+    z-index: 99;
+  }
+  .mobile-menu.open { display: flex; }
+  .mobile-menu a { font-weight: 700; color: var(--text); text-decoration: none; font-size: 1.1rem; }
 
-  .fi1 { width: 70px; height: 70px; background: #FFF3B0; top: 10px; right: -10px; animation-delay: 0s; }
-  .fi2 { width: 60px; height: 60px; background: #D4EDDA; bottom: 40px; right: -30px; animation-delay: -2s; }
-  .fi3 { width: 65px; height: 65px; background: #FFE0CC; top: 60px; left: -25px; animation-delay: -4s; }
+  /* HERO */
+  #home {
+    min-height: 100vh;
+    background: linear-gradient(135deg, #FFF8F0 0%, #FFF3E0 50%, #FFF8F0 100%);
+    display: flex; align-items: center;
+    padding: 100px 5% 60px;
+    position: relative; overflow: hidden;
+  }
+  .hero-bg-circles {
+    position: absolute; inset: 0; pointer-events: none; z-index: 0;
+  }
+  .hero-bg-circles .c1 {
+    position: absolute; width: 500px; height: 500px;
+    background: radial-gradient(circle, rgba(255,210,63,0.18) 0%, transparent 70%);
+    top: -100px; right: -100px; border-radius: 50%;
+    animation: float 8s ease-in-out infinite;
+  }
+  .hero-bg-circles .c2 {
+    position: absolute; width: 300px; height: 300px;
+    background: radial-gradient(circle, rgba(255,107,44,0.12) 0%, transparent 70%);
+    bottom: 50px; left: -80px; border-radius: 50%;
+    animation: float 10s ease-in-out infinite reverse;
+  }
+  .hero-bg-circles .c3 {
+    position: absolute; width: 200px; height: 200px;
+    background: radial-gradient(circle, rgba(74,124,89,0.1) 0%, transparent 70%);
+    top: 30%; left: 40%; border-radius: 50%;
+    animation: float 12s ease-in-out infinite;
+  }
+  @keyframes float {
+    0%, 100% { transform: translateY(0) scale(1); }
+    50% { transform: translateY(-20px) scale(1.04); }
+  }
+  .hero-content {
+    flex: 1; z-index: 1; max-width: 560px;
+    animation: slideUp .8s ease both;
+  }
+  @keyframes slideUp {
+    from { opacity: 0; transform: translateY(30px); }
+    to { opacity: 1; transform: translateY(0); }
+  }
+  .hero-badge {
+    display: inline-flex; align-items: center; gap: 8px;
+    background: var(--yellow-light); color: #8B6914;
+    padding: 6px 16px; border-radius: 999px;
+    font-size: .85rem; font-weight: 700;
+    margin-bottom: 20px;
+    border: 1.5px solid rgba(255,210,63,0.5);
+    animation: slideUp .8s .1s ease both;
+  }
+  .hero-badge .dot { width: 7px; height: 7px; background: var(--yellow); border-radius: 50%; animation: pulse 1.5s ease-in-out infinite; }
+  @keyframes pulse { 0%,100% { transform: scale(1); opacity: 1; } 50% { transform: scale(1.4); opacity: .7; } }
+  .hero h1 {
+    font-family: 'Baloo 2', cursive;
+    font-size: clamp(2.4rem, 5vw, 3.8rem);
+    font-weight: 800; line-height: 1.1;
+    color: var(--text); margin-bottom: 18px;
+    animation: slideUp .8s .2s ease both;
+  }
+  .hero h1 .highlight { color: var(--orange); }
+  .hero p {
+    font-size: 1.1rem; color: var(--text-muted);
+    line-height: 1.7; margin-bottom: 32px;
+    font-weight: 600;
+    animation: slideUp .8s .3s ease both;
+  }
+  .hero-ctas {
+    display: flex; gap: 14px; flex-wrap: wrap;
+    animation: slideUp .8s .4s ease both;
+  }
+  .btn-primary {
+    background: var(--orange); color: #fff;
+    padding: 14px 30px; border-radius: 999px;
+    font-weight: 800; font-size: 1rem;
+    text-decoration: none; border: none; cursor: pointer;
+    transition: all .2s;
+    box-shadow: 0 4px 20px rgba(255,107,44,0.35);
+    display: inline-flex; align-items: center; gap: 8px;
+  }
+  .btn-primary:hover { background: var(--orange-deep); transform: translateY(-2px); box-shadow: 0 8px 28px rgba(255,107,44,0.4); }
+  .btn-secondary {
+    background: transparent; color: var(--orange);
+    padding: 14px 30px; border-radius: 999px;
+    font-weight: 800; font-size: 1rem;
+    text-decoration: none; border: 2px solid var(--orange);
+    cursor: pointer; transition: all .2s;
+    display: inline-flex; align-items: center; gap: 8px;
+  }
+  .btn-secondary:hover { background: rgba(255,107,44,0.08); transform: translateY(-2px); }
+  .hero-stats {
+    display: flex; gap: 32px; margin-top: 40px;
+    animation: slideUp .8s .5s ease both;
+  }
+  .stat { text-align: center; }
+  .stat-num { font-family: 'Baloo 2', cursive; font-size: 1.8rem; font-weight: 800; color: var(--orange); }
+  .stat-label { font-size: .78rem; font-weight: 600; color: var(--text-muted); text-transform: uppercase; letter-spacing: .05em; }
+  .hero-visual {
+    flex: 1; z-index: 1; display: flex; justify-content: center; align-items: center;
+    position: relative; min-height: 420px;
+    animation: slideUp .8s .2s ease both;
+  }
+  .food-plate {
+    width: 340px; height: 340px;
+    background: var(--white);
+    border-radius: 50%;
+    box-shadow: var(--shadow-lg), 0 0 0 16px rgba(255,210,63,0.15), 0 0 0 32px rgba(255,107,44,0.06);
+    display: flex; align-items: center; justify-content: center;
+    font-size: 9rem;
+    position: relative;
+    animation: spin-slow 20s linear infinite;
+  }
+  @keyframes spin-slow { to { transform: rotate(360deg); } }
+  .food-plate .main-emoji { animation: counter-spin 20s linear infinite; }
+  @keyframes counter-spin { to { transform: rotate(-360deg); } }
+  .food-float {
+    position: absolute;
+    width: 64px; height: 64px;
+    background: var(--white);
+    border-radius: 50%;
+    box-shadow: 0 4px 20px rgba(0,0,0,0.12);
+    display: flex; align-items: center; justify-content: center;
+    font-size: 28px;
+  }
+  .f1 { top: 0; left: 50%; transform: translateX(-50%); animation: float 5s ease-in-out infinite; }
+  .f2 { top: 50%; right: 0; transform: translateY(-50%); animation: float 6s .5s ease-in-out infinite; }
+  .f3 { bottom: 0; left: 50%; transform: translateX(-50%); animation: float 7s 1s ease-in-out infinite; }
+  .f4 { top: 50%; left: 0; transform: translateY(-50%); animation: float 5.5s 1.5s ease-in-out infinite; }
+  .f5 { top: 10%; right: 10%; animation: float 6.5s 0.3s ease-in-out infinite; }
+  .f6 { bottom: 10%; left: 10%; animation: float 5.8s 0.8s ease-in-out infinite; }
 
-  /* ─── FEATURES STRIP ─── */
+  /* FEATURES STRIP */
   .features-strip {
     background: var(--orange);
-    padding: 1.5rem 5%;
-    overflow: hidden;
+    padding: 20px 5%;
+    display: flex; align-items: center; justify-content: space-around;
+    flex-wrap: wrap; gap: 16px;
   }
-
-  .features-scroll {
-    display: flex; gap: 3rem; align-items: center;
-    animation: scroll-x 20s linear infinite;
-    white-space: nowrap;
-  }
-
   .feat-item {
-    color: #fff;
-    font-weight: 800;
-    font-size: 0.95rem;
-    display: flex; align-items: center; gap: 8px;
-    flex-shrink: 0;
+    display: flex; align-items: center; gap: 10px;
+    color: #fff; font-weight: 700; font-size: .95rem;
   }
+  .feat-icon { font-size: 1.4rem; }
 
-  /* ─── SECTION SHARED ─── */
-  section { padding: 5rem 5%; }
-
+  /* SECTION STYLES */
+  section { padding: 80px 5%; }
   .section-tag {
     display: inline-block;
     background: var(--yellow-light);
-    color: var(--earth);
-    font-weight: 800;
-    font-size: 0.8rem;
-    text-transform: uppercase;
-    letter-spacing: 1.5px;
-    padding: 5px 14px;
-    border-radius: 20px;
-    margin-bottom: 0.8rem;
+    color: #8B6914;
+    padding: 5px 14px; border-radius: 999px;
+    font-size: .8rem; font-weight: 700;
+    text-transform: uppercase; letter-spacing: .08em;
+    margin-bottom: 12px;
+    border: 1.5px solid rgba(255,210,63,0.4);
   }
-
   .section-title {
-    font-family: 'Boogaloo', cursive;
-    font-size: clamp(2rem, 4vw, 3rem);
-    color: var(--dark);
-    line-height: 1.15;
-    margin-bottom: 0.5rem;
+    font-family: 'Baloo 2', cursive;
+    font-size: clamp(1.8rem, 3.5vw, 2.6rem);
+    font-weight: 800; line-height: 1.2;
+    color: var(--text); margin-bottom: 12px;
   }
-
-  .section-title .o { color: var(--orange); }
-
+  .section-title .accent { color: var(--orange); }
   .section-sub {
-    color: #777;
-    font-size: 1rem;
-    max-width: 500px;
-    line-height: 1.6;
+    color: var(--text-muted); font-size: 1rem;
+    font-weight: 600; max-width: 520px;
   }
+  .section-header { margin-bottom: 48px; }
 
-  /* ─── MENU ─── */
+  /* MENU SECTION */
   #menu { background: #fff; }
-
-  .menu-header { text-align: center; margin-bottom: 3rem; }
-
   .menu-tabs {
-    display: flex; gap: 0.6rem; flex-wrap: wrap; justify-content: center;
-    margin-bottom: 2.5rem;
+    display: flex; gap: 8px; flex-wrap: wrap; margin-bottom: 36px;
   }
-
   .tab-btn {
-    background: var(--cream);
-    border: 2px solid var(--light-border);
-    border-radius: 30px;
-    padding: 0.5rem 1.2rem;
+    padding: 9px 20px; border-radius: 999px;
+    border: 2px solid var(--border);
+    background: transparent; cursor: pointer;
     font-family: 'Nunito', sans-serif;
-    font-weight: 700;
-    font-size: 0.88rem;
-    cursor: pointer;
-    transition: all 0.2s;
-    color: var(--mid);
+    font-weight: 700; font-size: .88rem;
+    color: var(--text-muted); transition: all .2s;
   }
-
-  .tab-btn:hover, .tab-btn.active {
-    background: var(--orange);
+  .tab-btn:hover { border-color: var(--orange); color: var(--orange); }
+  .tab-btn.active {
+    background: var(--orange); color: #fff;
     border-color: var(--orange);
-    color: #fff;
-    transform: scale(1.03);
+    box-shadow: 0 2px 12px rgba(255,107,44,0.3);
   }
-
+  .menu-category { display: none; }
+  .menu-category.visible { display: block; animation: fadeIn .3s ease; }
+  @keyframes fadeIn { from { opacity: 0; transform: translateY(8px); } to { opacity: 1; transform: translateY(0); } }
+  .cat-title {
+    font-family: 'Baloo 2', cursive;
+    font-size: 1.5rem; font-weight: 800;
+    color: var(--text); margin-bottom: 24px;
+    display: flex; align-items: center; gap: 12px;
+  }
+  .cat-title::after {
+    content: ''; flex: 1; height: 2px;
+    background: linear-gradient(to right, var(--border), transparent);
+    border-radius: 2px;
+  }
   .menu-grid {
     display: grid;
     grid-template-columns: repeat(auto-fill, minmax(260px, 1fr));
-    gap: 1.4rem;
-    max-width: 1100px;
-    margin: 0 auto;
+    gap: 16px;
   }
-
-  .menu-category { display: none; }
-  .menu-category.active { display: contents; }
-
   .menu-card {
-    background: var(--cream);
-    border-radius: 20px;
-    border: 2px solid var(--light-border);
-    padding: 1.2rem 1.4rem;
-    display: flex; justify-content: space-between; align-items: center;
-    transition: transform 0.2s, box-shadow 0.2s;
-    position: relative;
-    overflow: hidden;
+    background: var(--card-bg);
+    border: 1.5px solid var(--border);
+    border-radius: var(--radius);
+    padding: 18px 20px;
+    display: flex; align-items: center; justify-content: space-between;
+    gap: 12px;
+    transition: all .25s;
+    position: relative; overflow: hidden;
   }
-
   .menu-card::before {
-    content: '';
-    position: absolute; top: 0; left: 0;
-    width: 5px; height: 100%;
+    content: ''; position: absolute;
+    left: 0; top: 0; bottom: 0; width: 4px;
     background: var(--orange);
-    border-radius: 0 0 0 0;
+    opacity: 0; transition: opacity .2s;
   }
-
-  .menu-card:hover { transform: translateY(-4px); box-shadow: 0 12px 28px rgba(255,107,43,0.12); }
-
-  .menu-card-left { flex: 1; padding-left: 0.5rem; }
-
-  .menu-item-name {
-    font-weight: 700;
-    font-size: 1rem;
-    color: var(--dark);
-    margin-bottom: 4px;
-    display: flex; align-items: center; gap: 6px;
-  }
-
-  .best-seller {
+  .menu-card:hover { border-color: var(--orange-light); box-shadow: var(--shadow); transform: translateY(-2px); }
+  .menu-card:hover::before { opacity: 1; }
+  .menu-item-info { flex: 1; }
+  .menu-item-name { font-weight: 700; font-size: .98rem; color: var(--text); margin-bottom: 4px; }
+  .best-seller-badge {
+    display: inline-block;
     background: var(--yellow);
-    color: var(--earth);
-    font-size: 0.65rem;
-    font-weight: 800;
-    padding: 2px 8px;
-    border-radius: 10px;
-    text-transform: uppercase;
-    letter-spacing: 0.5px;
+    color: #5C3A1E;
+    font-size: .7rem; font-weight: 800;
+    padding: 2px 8px; border-radius: 999px;
+    margin-left: 6px;
+    text-transform: uppercase; letter-spacing: .04em;
+  }
+  .menu-item-sub { font-size: .82rem; color: var(--text-muted); font-weight: 600; }
+  .menu-item-price {
+    font-family: 'Baloo 2', cursive;
+    font-size: 1.15rem; font-weight: 800;
+    color: var(--orange); white-space: nowrap;
   }
 
-  .menu-item-note { font-size: 0.82rem; color: #999; }
-
-  .menu-price {
-    font-family: 'Boogaloo', cursive;
-    font-size: 1.3rem;
-    color: var(--orange);
-    font-weight: 400;
-    white-space: nowrap;
-    margin-left: 0.8rem;
-  }
-
-  .menu-note-bar {
-    text-align: center;
-    margin-top: 2.5rem;
-    background: var(--yellow-light);
-    border-radius: 16px;
-    padding: 1rem 1.5rem;
-    font-size: 0.9rem;
-    font-weight: 700;
-    color: var(--earth);
-    max-width: 700px;
-    margin-left: auto; margin-right: auto;
-  }
-
-  /* ─── ABOUT ─── */
-  #about {
-    background: linear-gradient(135deg, #FFF8F0 60%, #F1F8E9 100%);
-  }
-
+  /* ABOUT SECTION */
+  #about { background: var(--cream); }
   .about-grid {
-    max-width: 1100px;
-    margin: 0 auto;
     display: grid;
     grid-template-columns: 1fr 1fr;
-    gap: 4rem;
-    align-items: center;
+    gap: 60px; align-items: center;
   }
-
-  .about-emoji-block {
-    display: grid;
-    grid-template-columns: 1fr 1fr;
-    gap: 1.2rem;
+  .about-img-col {
+    position: relative;
   }
-
-  .about-card {
-    background: #fff;
-    border-radius: 20px;
-    padding: 1.5rem;
-    text-align: center;
-    border: 2px solid var(--light-border);
-    transition: transform 0.2s;
-  }
-
-  .about-card:hover { transform: translateY(-5px); }
-
-  .about-card .emoji { font-size: 2.5rem; margin-bottom: 0.6rem; }
-
-  .about-card h4 {
-    font-weight: 800;
-    font-size: 0.95rem;
-    color: var(--dark);
-    margin-bottom: 4px;
-  }
-
-  .about-card p { font-size: 0.82rem; color: #888; line-height: 1.4; }
-
-  .about-card.featured {
-    grid-column: span 2;
-    background: var(--orange);
-    border-color: var(--orange);
-    color: #fff;
-  }
-
-  .about-card.featured h4, .about-card.featured p { color: #fff; }
-
-  .about-text .section-tag { margin-bottom: 0.8rem; }
-
-  .about-list {
-    margin: 1.5rem 0;
-    list-style: none;
-    display: flex; flex-direction: column; gap: 0.7rem;
-  }
-
-  .about-list li {
-    display: flex; align-items: flex-start; gap: 10px;
-    font-size: 0.95rem;
-    color: var(--mid);
-    line-height: 1.4;
-  }
-
-  .about-list li::before {
-    content: '✓';
-    color: var(--green);
-    font-weight: 800;
-    font-size: 1rem;
-    flex-shrink: 0;
-    margin-top: 1px;
-  }
-
-  /* ─── HOURS BAND ─── */
-  .hours-band {
-    background: var(--dark);
-    padding: 3rem 5%;
-    text-align: center;
-    color: #fff;
-  }
-
-  .hours-inner {
-    display: flex; justify-content: center; align-items: center;
-    gap: 4rem; flex-wrap: wrap;
-  }
-
-  .hour-stat .label {
-    font-size: 0.8rem;
-    color: #aaa;
-    text-transform: uppercase;
-    letter-spacing: 1px;
-    font-weight: 700;
-    margin-bottom: 4px;
-  }
-
-  .hour-stat .val {
-    font-family: 'Boogaloo', cursive;
-    font-size: 1.8rem;
-    color: var(--yellow);
-  }
-
-  .hour-divider { width: 1px; height: 60px; background: #444; }
-
-  /* ─── CONTACT ─── */
-  #contact { background: #fff; }
-
-  .contact-grid {
-    max-width: 1100px;
-    margin: 0 auto;
-    display: grid;
-    grid-template-columns: 1fr 1fr;
-    gap: 3rem;
-    align-items: start;
-  }
-
-  .contact-info-card {
-    background: var(--cream);
+  .about-main-card {
+    background: var(--white);
     border-radius: 24px;
-    border: 2px solid var(--light-border);
-    padding: 2rem;
+    padding: 40px;
+    box-shadow: var(--shadow-lg);
+    text-align: center;
+    font-size: 6rem;
+    border: 2px solid rgba(255,107,44,0.1);
   }
-
-  .contact-info-card h3 {
-    font-family: 'Boogaloo', cursive;
-    font-size: 1.5rem;
-    color: var(--dark);
-    margin-bottom: 1.5rem;
+  .about-float-1 {
+    position: absolute; top: -20px; right: -20px;
+    background: var(--yellow);
+    border-radius: 16px; padding: 16px 20px;
+    box-shadow: 0 4px 20px rgba(255,210,63,0.3);
+    text-align: center;
   }
-
-  .contact-row {
-    display: flex; align-items: flex-start; gap: 12px;
-    margin-bottom: 1.2rem;
-  }
-
-  .contact-icon {
-    width: 44px; height: 44px;
+  .about-float-1 .af-num { font-family: 'Baloo 2', cursive; font-size: 1.4rem; font-weight: 800; color: var(--brown); }
+  .about-float-1 .af-label { font-size: .72rem; font-weight: 700; color: var(--brown); }
+  .about-float-2 {
+    position: absolute; bottom: -20px; left: -20px;
     background: var(--orange);
-    border-radius: 12px;
+    border-radius: 16px; padding: 16px 20px;
+    box-shadow: 0 4px 20px rgba(255,107,44,0.3);
+    text-align: center;
+  }
+  .about-float-2 .af-num { font-family: 'Baloo 2', cursive; font-size: 1.4rem; font-weight: 800; color: #fff; }
+  .about-float-2 .af-label { font-size: .72rem; font-weight: 700; color: rgba(255,255,255,.85); }
+  .about-content {}
+  .about-content h2 { margin-bottom: 16px; }
+  .about-content p { color: var(--text-muted); font-size: 1rem; line-height: 1.8; margin-bottom: 20px; font-weight: 600; }
+  .about-features {
+    display: grid; grid-template-columns: 1fr 1fr; gap: 14px; margin-top: 28px;
+  }
+  .af-item {
+    display: flex; align-items: center; gap: 10px;
+    background: var(--card-bg);
+    border: 1.5px solid var(--border);
+    border-radius: var(--radius-sm);
+    padding: 12px 14px;
+    font-weight: 700; font-size: .88rem;
+    color: var(--text);
+  }
+  .af-item .icon { font-size: 1.2rem; }
+  .hours-card {
+    background: var(--orange);
+    border-radius: var(--radius);
+    padding: 20px 24px; margin-top: 24px;
+    display: flex; align-items: center; justify-content: space-between;
+    color: #fff;
+  }
+  .hours-left .label { font-size: .8rem; font-weight: 700; opacity: .85; text-transform: uppercase; letter-spacing: .06em; }
+  .hours-left .time { font-family: 'Baloo 2', cursive; font-size: 1.5rem; font-weight: 800; }
+  .hours-right { font-size: 2rem; }
+
+  /* CONTACT SECTION */
+  #contact { background: #fff; }
+  .contact-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 40px;
+  }
+  .contact-info-col {}
+  .contact-cards { display: flex; flex-direction: column; gap: 16px; margin-top: 28px; }
+  .contact-card {
+    display: flex; align-items: center; gap: 16px;
+    background: var(--card-bg);
+    border: 1.5px solid var(--border);
+    border-radius: var(--radius);
+    padding: 18px 20px;
+    text-decoration: none; color: var(--text);
+    transition: all .2s;
+  }
+  .contact-card:hover { border-color: var(--orange); box-shadow: var(--shadow); transform: translateX(4px); }
+  .contact-icon {
+    width: 48px; height: 48px; border-radius: 14px;
     display: flex; align-items: center; justify-content: center;
-    font-size: 1.2rem;
-    flex-shrink: 0;
+    font-size: 1.4rem; flex-shrink: 0;
   }
-
-  .contact-detail strong {
-    display: block;
-    font-size: 0.8rem;
-    text-transform: uppercase;
-    letter-spacing: 1px;
-    color: #aaa;
-    font-weight: 700;
-    margin-bottom: 2px;
-  }
-
-  .contact-detail span {
-    font-size: 0.98rem;
-    font-weight: 600;
-    color: var(--dark);
-  }
-
+  .ci-orange { background: rgba(255,107,44,0.1); }
+  .ci-green { background: rgba(74,124,89,0.1); }
+  .ci-yellow { background: rgba(255,210,63,0.15); }
+  .contact-card-label { font-size: .78rem; font-weight: 700; color: var(--text-muted); text-transform: uppercase; letter-spacing: .06em; }
+  .contact-card-val { font-weight: 700; font-size: 1rem; color: var(--text); }
   .call-btn {
     display: flex; align-items: center; justify-content: center; gap: 10px;
-    background: var(--green);
-    color: #fff;
-    text-decoration: none;
-    border-radius: 14px;
-    padding: 0.9rem 1.5rem;
-    font-weight: 800;
-    font-size: 1rem;
-    margin-top: 1.5rem;
-    transition: transform 0.2s, box-shadow 0.2s;
-    box-shadow: 0 6px 20px rgba(76,175,80,0.35);
+    background: var(--green); color: #fff;
+    padding: 16px; border-radius: var(--radius);
+    font-weight: 800; font-size: 1.05rem;
+    text-decoration: none; margin-top: 20px;
+    transition: all .2s;
+    box-shadow: 0 4px 20px rgba(74,124,89,0.3);
   }
-
-  .call-btn:hover { transform: translateY(-3px); box-shadow: 0 10px 28px rgba(76,175,80,0.45); }
-
-  .map-container {
-    border-radius: 24px;
+  .call-btn:hover { background: #3a6347; transform: translateY(-2px); }
+  .map-col {}
+  .map-frame {
+    border-radius: 20px;
     overflow: hidden;
-    border: 2px solid var(--light-border);
+    box-shadow: var(--shadow-lg);
+    border: 2px solid var(--border);
     height: 380px;
-    background: #eee;
-    display: flex; flex-direction: column;
+  }
+  .map-frame iframe { width: 100%; height: 100%; border: none; display: block; }
+  .map-overlay-info {
+    background: var(--card-bg);
+    border: 1.5px solid var(--border);
+    border-radius: var(--radius-sm);
+    padding: 14px 18px;
+    margin-top: 14px;
+    display: flex; align-items: center; gap: 10px;
+    font-weight: 600; font-size: .9rem; color: var(--text-muted);
   }
 
-  .map-container iframe {
-    width: 100%;
-    flex: 1;
-    border: none;
-  }
-
-  .map-footer {
-    background: var(--orange);
-    color: #fff;
+  /* SPECIALS BANNER */
+  .specials-banner {
+    background: linear-gradient(135deg, var(--orange) 0%, #E55A1E 100%);
+    padding: 60px 5%;
     text-align: center;
-    padding: 0.6rem;
-    font-weight: 700;
-    font-size: 0.88rem;
+    position: relative; overflow: hidden;
   }
+  .specials-banner::before {
+    content: '🎉'; position: absolute;
+    font-size: 6rem; opacity: .08;
+    top: 10px; left: 5%;
+  }
+  .specials-banner::after {
+    content: '🌟'; position: absolute;
+    font-size: 5rem; opacity: .08;
+    bottom: 10px; right: 5%;
+  }
+  .specials-banner h2 {
+    font-family: 'Baloo 2', cursive;
+    font-size: clamp(1.6rem, 3vw, 2.4rem);
+    font-weight: 800; color: #fff; margin-bottom: 12px;
+  }
+  .specials-banner p { color: rgba(255,255,255,.9); font-size: 1.05rem; font-weight: 600; margin-bottom: 28px; }
+  .specials-pills {
+    display: flex; gap: 12px; justify-content: center; flex-wrap: wrap;
+    margin-bottom: 28px;
+  }
+  .pill {
+    background: rgba(255,255,255,0.2);
+    color: #fff; border: 1.5px solid rgba(255,255,255,.4);
+    padding: 8px 18px; border-radius: 999px;
+    font-weight: 700; font-size: .9rem;
+    backdrop-filter: blur(4px);
+  }
+  .banner-ctas { display: flex; gap: 14px; justify-content: center; flex-wrap: wrap; }
+  .btn-white {
+    background: #fff; color: var(--orange);
+    padding: 14px 30px; border-radius: 999px;
+    font-weight: 800; font-size: 1rem;
+    text-decoration: none; transition: all .2s;
+    box-shadow: 0 4px 20px rgba(0,0,0,0.15);
+  }
+  .btn-white:hover { transform: translateY(-2px); box-shadow: 0 8px 28px rgba(0,0,0,0.2); }
+  .btn-outline-white {
+    background: transparent; color: #fff;
+    padding: 14px 30px; border-radius: 999px;
+    font-weight: 800; font-size: 1rem;
+    text-decoration: none; border: 2px solid #fff;
+    transition: all .2s;
+  }
+  .btn-outline-white:hover { background: rgba(255,255,255,0.15); transform: translateY(-2px); }
 
-  /* ─── FOOTER ─── */
+  /* FOOTER */
   footer {
-    background: var(--dark);
-    color: #ccc;
-    padding: 3rem 5% 2rem;
-    text-align: center;
+    background: var(--text);
+    color: rgba(255,255,255,.75);
+    padding: 48px 5% 24px;
   }
-
-  .footer-logo {
-    font-family: 'Boogaloo', cursive;
-    font-size: 2.2rem;
-    color: var(--orange);
-    margin-bottom: 0.5rem;
+  .footer-grid {
+    display: grid;
+    grid-template-columns: 2fr 1fr 1fr;
+    gap: 40px; margin-bottom: 40px;
   }
-
-  .footer-logo span { color: var(--yellow); }
-
-  .footer-tagline { font-size: 0.9rem; color: #888; margin-bottom: 1.5rem; }
-
-  .footer-links {
-    display: flex; justify-content: center; gap: 2rem; flex-wrap: wrap;
-    list-style: none;
-    margin-bottom: 2rem;
+  .footer-brand .nav-logo { margin-bottom: 12px; display: inline-flex; }
+  .footer-brand p { font-size: .9rem; line-height: 1.7; color: rgba(255,255,255,.6); max-width: 280px; }
+  .footer-col h4 {
+    font-weight: 800; font-size: .9rem;
+    color: #fff; text-transform: uppercase;
+    letter-spacing: .08em; margin-bottom: 14px;
   }
-
-  .footer-links a { color: #aaa; text-decoration: none; font-weight: 600; font-size: 0.9rem; transition: color 0.2s; }
-  .footer-links a:hover { color: var(--orange); }
-
+  .footer-col ul { list-style: none; display: flex; flex-direction: column; gap: 8px; }
+  .footer-col ul li a { color: rgba(255,255,255,.6); text-decoration: none; font-size: .9rem; font-weight: 600; transition: color .2s; }
+  .footer-col ul li a:hover { color: var(--yellow); }
+  .footer-col ul li { font-size: .9rem; font-weight: 600; color: rgba(255,255,255,.6); line-height: 1.6; }
   .footer-bottom {
-    border-top: 1px solid #333;
-    padding-top: 1.2rem;
-    font-size: 0.8rem;
-    color: #555;
+    border-top: 1px solid rgba(255,255,255,.1);
+    padding-top: 20px; display: flex;
+    justify-content: space-between; align-items: center;
+    flex-wrap: wrap; gap: 12px;
   }
-
-  .veg-badge {
-    display: inline-flex; align-items: center; gap: 5px;
-    background: var(--green);
-    color: #fff;
-    padding: 3px 10px;
-    border-radius: 12px;
-    font-size: 0.78rem;
-    font-weight: 800;
-    vertical-align: middle;
+  .footer-bottom p { font-size: .82rem; color: rgba(255,255,255,.4); }
+  .pure-veg-badge {
+    display: inline-flex; align-items: center; gap: 6px;
+    background: rgba(74,196,89,0.15);
+    border: 1.5px solid rgba(74,196,89,0.3);
+    color: #5fd67a; padding: 5px 12px;
+    border-radius: 999px; font-size: .8rem; font-weight: 700;
   }
+  .veg-dot { width: 8px; height: 8px; background: #5fd67a; border-radius: 50%; }
 
-  /* ─── ANIMATIONS ─── */
-  @keyframes fadeUp {
-    from { opacity: 0; transform: translateY(22px); }
-    to   { opacity: 1; transform: translateY(0); }
+  /* SCROLL REVEAL */
+  .reveal { opacity: 0; transform: translateY(24px); transition: opacity .7s ease, transform .7s ease; }
+  .reveal.shown { opacity: 1; transform: translateY(0); }
+  .reveal-delay-1 { transition-delay: .1s; }
+  .reveal-delay-2 { transition-delay: .2s; }
+  .reveal-delay-3 { transition-delay: .3s; }
+
+  /* RESPONSIVE */
+  @media (max-width: 900px) {
+    #home { flex-direction: column; padding-top: 90px; }
+    .hero-visual { min-height: 280px; }
+    .food-plate { width: 240px; height: 240px; font-size: 6rem; }
+    .about-grid { grid-template-columns: 1fr; gap: 40px; }
+    .about-img-col { display: none; }
+    .contact-grid { grid-template-columns: 1fr; }
+    .footer-grid { grid-template-columns: 1fr; gap: 24px; }
   }
-
-  @keyframes fadeIn {
-    from { opacity: 0; }
-    to   { opacity: 1; }
-  }
-
-  @keyframes float {
-    0%, 100% { transform: translateY(0); }
-    50%       { transform: translateY(-14px); }
-  }
-
-  @keyframes orbit {
-    0%   { transform: rotate(0deg)   translateX(200px) rotate(0deg); }
-    100% { transform: rotate(360deg) translateX(200px) rotate(-360deg); }
-  }
-
-  @keyframes scroll-x {
-    from { transform: translateX(0); }
-    to   { transform: translateX(-50%); }
-  }
-
-  /* ─── RESPONSIVE ─── */
-  @media (max-width: 860px) {
-    .hero-inner      { grid-template-columns: 1fr; text-align: center; }
-    .hero-pills      { justify-content: center; }
-    .hero-ctas       { justify-content: center; }
-    .hero-visual     { display: none; }
-    .about-grid      { grid-template-columns: 1fr; }
-    .contact-grid    { grid-template-columns: 1fr; }
-    .nav-links       { display: none; }
-    .hours-inner     { gap: 2rem; }
-    .hour-divider    { display: none; }
+  @media (max-width: 600px) {
+    .nav-links, .nav-cta { display: none; }
+    .hamburger { display: flex; }
+    .hero-stats { gap: 20px; }
+    .features-strip { justify-content: flex-start; padding: 16px 5%; }
+    .about-features { grid-template-columns: 1fr; }
+    .footer-grid { grid-template-columns: 1fr; }
   }
 </style>
 </head>
 <body>
 
 <!-- NAV -->
-<nav>
-  <a class="nav-logo" href="#home">🌿 Tasty <span>Route</span></a>
+<nav id="navbar">
+  <a href="#home" class="nav-logo">
+    <div class="logo-icon">🍴</div>
+    Tasty <span>Route</span>
+  </a>
   <ul class="nav-links">
     <li><a href="#home">Home</a></li>
     <li><a href="#menu">Menu</a></li>
     <li><a href="#about">About</a></li>
     <li><a href="#contact">Contact</a></li>
-    <li><a href="tel:09346515436" class="nav-cta">📞 Call Us</a></li>
   </ul>
+  <a href="tel:09346515436" class="nav-cta">📞 Call Now</a>
+  <div class="hamburger" onclick="toggleMenu()">
+    <span></span><span></span><span></span>
+  </div>
 </nav>
+<div class="mobile-menu" id="mobileMenu">
+  <a href="#home" onclick="toggleMenu()">🏠 Home</a>
+  <a href="#menu" onclick="toggleMenu()">🍽️ Menu</a>
+  <a href="#about" onclick="toggleMenu()">💚 About</a>
+  <a href="#contact" onclick="toggleMenu()">📍 Contact</a>
+  <a href="tel:09346515436" style="color: var(--orange);">📞 Call: 093465 15436</a>
+</div>
 
 <!-- HERO -->
 <section id="home">
   <div class="hero-bg-circles">
-    <div class="circle c1"></div>
-    <div class="circle c2"></div>
-    <div class="circle c3"></div>
+    <div class="c1"></div>
+    <div class="c2"></div>
+    <div class="c3"></div>
   </div>
-  <div class="hero-inner">
-    <div class="hero-text">
-      <div class="hero-badge">🌱 100% Pure Vegetarian</div>
-      <h1 class="hero-title">Level Up Your<br><span class="highlight">Refreshment!</span></h1>
-      <p class="hero-sub">Fresh, Fast & Delicious food crafted with love in Himayatnagar. Family-friendly, quick bites, and big flavours — all in one spot!</p>
-      <div class="hero-pills">
-        <div class="pill">🍟 Fries &amp; Snacks</div>
-        <div class="pill">🧇 Waffles</div>
-        <div class="pill">☕ Beverages</div>
-        <div class="pill">🥙 Momos</div>
+  <div class="hero-content">
+    <div class="hero-badge">
+      <span class="dot"></span>
+      🌿 100% Pure Vegetarian
+    </div>
+    <h1 class="hero">
+      Level Up Your<br>
+      <span class="highlight">Refreshment!</span>
+    </h1>
+    <p>Fresh, Fast &amp; Delicious food served with love in the heart of Himayatnagar, Hyderabad. Order ready in just 15–20 minutes!</p>
+    <div class="hero-ctas">
+      <a href="#menu" class="btn-primary">🍽️ View Full Menu</a>
+      <a href="#contact" class="btn-secondary">📍 Visit Us Today</a>
+    </div>
+    <div class="hero-stats">
+      <div class="stat">
+        <div class="stat-num">15</div>
+        <div class="stat-label">Min Prep</div>
       </div>
-      <div class="hero-ctas">
-        <a href="#menu" class="btn-primary">🍽️ View Full Menu</a>
-        <a href="#contact" class="btn-secondary">📍 Visit Us Today</a>
+      <div class="stat">
+        <div class="stat-num">₹30</div>
+        <div class="stat-label">Add-Ons</div>
+      </div>
+      <div class="stat">
+        <div class="stat-num">11 PM</div>
+        <div class="stat-label">Open Till</div>
+      </div>
+      <div class="stat">
+        <div class="stat-num">100%</div>
+        <div class="stat-label">Veg Only</div>
       </div>
     </div>
-    <div class="hero-visual">
-      <div class="float-item fi1">🧇</div>
-      <div class="float-item fi2">🍟</div>
-      <div class="float-item fi3">☕</div>
-      <div class="hero-plate">🥙</div>
+  </div>
+  <div class="hero-visual">
+    <div class="food-plate">
+      <span class="main-emoji">🧆</span>
     </div>
+    <div class="food-float f1">🥪</div>
+    <div class="food-float f2">🧇</div>
+    <div class="food-float f3">☕</div>
+    <div class="food-float f4">🥟</div>
+    <div class="food-float f5">🍟</div>
+    <div class="food-float f6">🍚</div>
   </div>
 </section>
 
 <!-- FEATURES STRIP -->
 <div class="features-strip">
-  <div class="features-scroll">
-    <div class="feat-item">🌿 100% Pure Veg</div>
-    <div class="feat-item">⏱ Ready in 15–20 Min</div>
-    <div class="feat-item">👨‍👩‍👧 Family Friendly</div>
-    <div class="feat-item">🧒 Kids Menu Available</div>
-    <div class="feat-item">🕙 Open Till 11:00 PM</div>
-    <div class="feat-item">➕ Add-ons for ₹30</div>
-    <div class="feat-item">🌿 100% Pure Veg</div>
-    <div class="feat-item">⏱ Ready in 15–20 Min</div>
-    <div class="feat-item">👨‍👩‍👧 Family Friendly</div>
-    <div class="feat-item">🧒 Kids Menu Available</div>
-    <div class="feat-item">🕙 Open Till 11:00 PM</div>
-    <div class="feat-item">➕ Add-ons for ₹30</div>
-  </div>
+  <div class="feat-item"><span class="feat-icon">🌿</span> 100% Pure Vegetarian</div>
+  <div class="feat-item"><span class="feat-icon">⚡</span> 15–20 Min Prep Time</div>
+  <div class="feat-item"><span class="feat-icon">👨‍👩‍👧</span> Kids' Menu Available</div>
+  <div class="feat-item"><span class="feat-icon">✨</span> Add-Ons from ₹30</div>
+  <div class="feat-item"><span class="feat-icon">🕙</span> Open till 11 PM</div>
 </div>
 
-<!-- MENU -->
+<!-- MENU SECTION -->
 <section id="menu">
-  <div class="menu-header">
-    <div class="section-tag">🍴 What's Cooking</div>
-    <h2 class="section-title">Our <span class="o">Delicious</span> Menu</h2>
-    <p class="section-sub" style="margin: 0 auto;">Every item made fresh. <span class="veg-badge">🟢 Pure Veg</span> — no compromises!</p>
+  <div class="section-header reveal">
+    <div class="section-tag">Our Menu</div>
+    <h2 class="section-title">Fresh Picks &amp; <span class="accent">Bestsellers</span></h2>
+    <p class="section-sub">Every item made fresh. Prep time: 15–20 minutes. Add-ons available for just ₹30!</p>
   </div>
 
-  <div class="menu-tabs">
-    <button class="tab-btn active" onclick="showCategory('all')">All Items</button>
+  <div class="menu-tabs reveal">
+    <button class="tab-btn active" onclick="showCategory('all')">🍽️ All Items</button>
     <button class="tab-btn" onclick="showCategory('breakfast')">🌅 Breakfast</button>
     <button class="tab-btn" onclick="showCategory('fries')">🍟 Fries</button>
     <button class="tab-btn" onclick="showCategory('sandwiches')">🥪 Sandwiches</button>
-    <button class="tab-btn" onclick="showCategory('twisters')">🌀 Twisters</button>
+    <button class="tab-btn" onclick="showCategory('twisters')">🌯 Twisters</button>
     <button class="tab-btn" onclick="showCategory('rice')">🍚 Rice</button>
     <button class="tab-btn" onclick="showCategory('maggi')">🍜 Maggi</button>
     <button class="tab-btn" onclick="showCategory('momos')">🥟 Momos</button>
@@ -784,263 +694,344 @@
     <button class="tab-btn" onclick="showCategory('beverages')">☕ Beverages</button>
   </div>
 
-  <div class="menu-grid">
+  <div id="cat-all" class="menu-category visible">
+    <!-- All items shown when ALL is selected -->
 
-    <!-- Breakfast -->
-    <div class="menu-category active" data-cat="breakfast">
-      <div class="menu-card">
-        <div class="menu-card-left">
-          <div class="menu-item-name">🌾 Poha</div>
-          <div class="menu-item-note">Light morning snack</div>
-        </div>
-        <div class="menu-price">₹50</div>
-      </div>
-      <div class="menu-card">
-        <div class="menu-card-left">
-          <div class="menu-item-name">🫓 Palak Paratha</div>
-          <div class="menu-item-note">Healthy spinach flatbread</div>
-        </div>
-        <div class="menu-price">₹50</div>
-      </div>
+    <div class="cat-title">🌅 Breakfast &amp; Quick Bites</div>
+    <div class="menu-grid">
+      <div class="menu-card"><div class="menu-item-info"><div class="menu-item-name">Poha</div><div class="menu-item-sub">Light &amp; fluffy breakfast</div></div><div class="menu-item-price">₹50</div></div>
+      <div class="menu-card"><div class="menu-item-info"><div class="menu-item-name">Palak Paratha</div><div class="menu-item-sub">Spinach flatbread</div></div><div class="menu-item-price">₹50</div></div>
     </div>
 
-    <!-- Fries -->
-    <div class="menu-category active" data-cat="fries">
-      <div class="menu-card">
-        <div class="menu-card-left">
-          <div class="menu-item-name">🍟 Classic Fries</div>
-          <div class="menu-item-note">Golden &amp; crispy</div>
-        </div>
-        <div class="menu-price">₹50</div>
-      </div>
-      <div class="menu-card">
-        <div class="menu-card-left">
-          <div class="menu-item-name">🌶 Peri Peri Fries <span class="best-seller">⭐ Best Seller</span></div>
-          <div class="menu-item-note">Spicy peri peri seasoning</div>
-        </div>
-        <div class="menu-price">₹70</div>
-      </div>
+    <div class="cat-title" style="margin-top:32px">🍟 Fries</div>
+    <div class="menu-grid">
+      <div class="menu-card"><div class="menu-item-info"><div class="menu-item-name">Classic Fries</div><div class="menu-item-sub">Crispy &amp; golden</div></div><div class="menu-item-price">₹50</div></div>
+      <div class="menu-card"><div class="menu-item-info"><div class="menu-item-name">Peri Peri Fries<span class="best-seller-badge">🔥 Best Seller</span></div><div class="menu-item-sub">Spicy &amp; tangy</div></div><div class="menu-item-price">₹70</div></div>
     </div>
 
-    <!-- Sandwiches -->
-    <div class="menu-category active" data-cat="sandwiches">
-      <div class="menu-card"><div class="menu-card-left"><div class="menu-item-name">🥜 Peanut Butter</div><div class="menu-item-note">Classic comfort sandwich</div></div><div class="menu-price">₹60</div></div>
-      <div class="menu-card"><div class="menu-card-left"><div class="menu-item-name">🥪 Grilled Veg</div><div class="menu-item-note">Fresh veggie grill</div></div><div class="menu-price">₹50</div></div>
-      <div class="menu-card"><div class="menu-card-left"><div class="menu-item-name">🧀 Grilled Veg Cheese</div><div class="menu-item-note">Veg + melted cheese</div></div><div class="menu-price">₹60</div></div>
-      <div class="menu-card"><div class="menu-card-left"><div class="menu-item-name">🫓 Grilled Paneer</div><div class="menu-item-note">Protein-packed delight</div></div><div class="menu-price">₹70</div></div>
-      <div class="menu-card"><div class="menu-card-left"><div class="menu-item-name">🧀 Grilled Paneer Cheese</div><div class="menu-item-note">Paneer + extra cheese</div></div><div class="menu-price">₹80</div></div>
+    <div class="cat-title" style="margin-top:32px">🥪 Sandwiches</div>
+    <div class="menu-grid">
+      <div class="menu-card"><div class="menu-item-info"><div class="menu-item-name">Peanut Butter</div></div><div class="menu-item-price">₹60</div></div>
+      <div class="menu-card"><div class="menu-item-info"><div class="menu-item-name">Grilled Veg</div></div><div class="menu-item-price">₹50</div></div>
+      <div class="menu-card"><div class="menu-item-info"><div class="menu-item-name">Grilled Veg Cheese</div></div><div class="menu-item-price">₹60</div></div>
+      <div class="menu-card"><div class="menu-item-info"><div class="menu-item-name">Grilled Paneer</div></div><div class="menu-item-price">₹70</div></div>
+      <div class="menu-card"><div class="menu-item-info"><div class="menu-item-name">Grilled Paneer Cheese</div></div><div class="menu-item-price">₹80</div></div>
     </div>
 
-    <!-- Twisters -->
-    <div class="menu-category active" data-cat="twisters">
-      <div class="menu-card"><div class="menu-card-left"><div class="menu-item-name">🌀 Masala Twister</div><div class="menu-item-note">Spicy Indian flavour</div></div><div class="menu-price">₹70</div></div>
-      <div class="menu-card"><div class="menu-card-left"><div class="menu-item-name">🧀 Cheese Twister</div><div class="menu-item-note">Cheesy &amp; indulgent</div></div><div class="menu-price">₹90</div></div>
-      <div class="menu-card"><div class="menu-card-left"><div class="menu-item-name">🫙 Mayo Twister</div><div class="menu-item-note">Creamy mayo blend</div></div><div class="menu-price">₹90</div></div>
+    <div class="cat-title" style="margin-top:32px">🌯 Twisters</div>
+    <div class="menu-grid">
+      <div class="menu-card"><div class="menu-item-info"><div class="menu-item-name">Masala Twister</div></div><div class="menu-item-price">₹70</div></div>
+      <div class="menu-card"><div class="menu-item-info"><div class="menu-item-name">Cheese Twister</div></div><div class="menu-item-price">₹90</div></div>
+      <div class="menu-card"><div class="menu-item-info"><div class="menu-item-name">Mayo Twister</div></div><div class="menu-item-price">₹90</div></div>
     </div>
 
-    <!-- Rice -->
-    <div class="menu-category active" data-cat="rice">
-      <div class="menu-card"><div class="menu-card-left"><div class="menu-item-name">🍚 Veg Fried Rice</div><div class="menu-item-note">Wok-tossed veggie rice</div></div><div class="menu-price">₹50</div></div>
-      <div class="menu-card"><div class="menu-card-left"><div class="menu-item-name">🧀 Paneer Rice</div><div class="menu-item-note">Rich &amp; flavourful</div></div><div class="menu-price">₹70</div></div>
+    <div class="cat-title" style="margin-top:32px">🍚 Rice Specials</div>
+    <div class="menu-grid">
+      <div class="menu-card"><div class="menu-item-info"><div class="menu-item-name">Veg Fried Rice</div></div><div class="menu-item-price">₹50</div></div>
+      <div class="menu-card"><div class="menu-item-info"><div class="menu-item-name">Paneer Rice</div></div><div class="menu-item-price">₹70</div></div>
     </div>
 
-    <!-- Maggi -->
-    <div class="menu-category active" data-cat="maggi">
-      <div class="menu-card"><div class="menu-card-left"><div class="menu-item-name">🍜 Butter Masala Maggi</div><div class="menu-item-note">Buttery &amp; spiced</div></div><div class="menu-price">₹50</div></div>
-      <div class="menu-card"><div class="menu-card-left"><div class="menu-item-name">🥦 Vegetable Maggi</div><div class="menu-item-note">Loaded with veggies</div></div><div class="menu-price">₹60</div></div>
-      <div class="menu-card"><div class="menu-card-left"><div class="menu-item-name">🧀 Cheese Maggi <span class="best-seller">⭐ Best Seller</span></div><div class="menu-item-note">Gooey cheese topping</div></div><div class="menu-price">₹70</div></div>
-      <div class="menu-card"><div class="menu-card-left"><div class="menu-item-name">🫓 Paneer Maggi</div><div class="menu-item-note">Chunky paneer pieces</div></div><div class="menu-price">₹70</div></div>
+    <div class="cat-title" style="margin-top:32px">🍜 Maggi Specials</div>
+    <div class="menu-grid">
+      <div class="menu-card"><div class="menu-item-info"><div class="menu-item-name">Butter Masala Maggi</div></div><div class="menu-item-price">₹50</div></div>
+      <div class="menu-card"><div class="menu-item-info"><div class="menu-item-name">Vegetable Maggi</div></div><div class="menu-item-price">₹60</div></div>
+      <div class="menu-card"><div class="menu-item-info"><div class="menu-item-name">Cheese Maggi<span class="best-seller-badge">🔥 Best Seller</span></div></div><div class="menu-item-price">₹70</div></div>
+      <div class="menu-card"><div class="menu-item-info"><div class="menu-item-name">Paneer Maggi</div></div><div class="menu-item-price">₹70</div></div>
     </div>
 
-    <!-- Momos -->
-    <div class="menu-category active" data-cat="momos">
-      <div class="menu-card"><div class="menu-card-left"><div class="menu-item-name">🥟 Veg Momos (6 Pcs)</div><div class="menu-item-note">Steam / Fry</div></div><div class="menu-price">₹70 / ₹80</div></div>
-      <div class="menu-card"><div class="menu-card-left"><div class="menu-item-name">🧀 Paneer Momos (6 Pcs)</div><div class="menu-item-note">Steam / Fry</div></div><div class="menu-price">₹80 / ₹90</div></div>
+    <div class="cat-title" style="margin-top:32px">🥟 Momos (6 Pcs)</div>
+    <div class="menu-grid">
+      <div class="menu-card"><div class="menu-item-info"><div class="menu-item-name">Veg Momos – Steam</div></div><div class="menu-item-price">₹70</div></div>
+      <div class="menu-card"><div class="menu-item-info"><div class="menu-item-name">Veg Momos – Fry</div></div><div class="menu-item-price">₹80</div></div>
+      <div class="menu-card"><div class="menu-item-info"><div class="menu-item-name">Paneer Momos – Steam</div></div><div class="menu-item-price">₹80</div></div>
+      <div class="menu-card"><div class="menu-item-info"><div class="menu-item-name">Paneer Momos – Fry</div></div><div class="menu-item-price">₹90</div></div>
     </div>
 
-    <!-- Waffles -->
-    <div class="menu-category active" data-cat="waffles">
-      <div class="menu-card"><div class="menu-card-left"><div class="menu-item-name">🧇 Single Chocolate Waffle</div><div class="menu-item-note">Light choco drizzle</div></div><div class="menu-price">₹60</div></div>
-      <div class="menu-card"><div class="menu-card-left"><div class="menu-item-name">🍫 Double Chocolate Waffle</div><div class="menu-item-note">Double the indulgence</div></div><div class="menu-price">₹80</div></div>
-      <div class="menu-card"><div class="menu-card-left"><div class="menu-item-name">🍫 Triple Chocolate Waffle <span class="best-seller">⭐ Best Seller</span></div><div class="menu-item-note">Ultimate choco paradise</div></div><div class="menu-price">₹100</div></div>
+    <div class="cat-title" style="margin-top:32px">🧇 Waffles</div>
+    <div class="menu-grid">
+      <div class="menu-card"><div class="menu-item-info"><div class="menu-item-name">Single Chocolate</div></div><div class="menu-item-price">₹60</div></div>
+      <div class="menu-card"><div class="menu-item-info"><div class="menu-item-name">Double Chocolate</div></div><div class="menu-item-price">₹80</div></div>
+      <div class="menu-card"><div class="menu-item-info"><div class="menu-item-name">Triple Chocolate<span class="best-seller-badge">🔥 Best Seller</span></div></div><div class="menu-item-price">₹100</div></div>
     </div>
 
-    <!-- Beverages -->
-    <div class="menu-category active" data-cat="beverages">
-      <div class="menu-card"><div class="menu-card-left"><div class="menu-item-name">☕ Black Coffee</div><div class="menu-item-note">Strong &amp; aromatic</div></div><div class="menu-price">₹30</div></div>
-      <div class="menu-card"><div class="menu-card-left"><div class="menu-item-name">🍵 Green Tea</div><div class="menu-item-note">Refreshing &amp; healthy</div></div><div class="menu-price">₹30</div></div>
-      <div class="menu-card"><div class="menu-card-left"><div class="menu-item-name">🍋 Lemonade</div><div class="menu-item-note">Zesty citrus cooler</div></div><div class="menu-price">₹30</div></div>
-      <div class="menu-card"><div class="menu-card-left"><div class="menu-item-name">🥤 Cold Coffee</div><div class="menu-item-note">Chilled coffee delight</div></div><div class="menu-price">₹50</div></div>
+    <div class="cat-title" style="margin-top:32px">☕ Beverages</div>
+    <div class="menu-grid">
+      <div class="menu-card"><div class="menu-item-info"><div class="menu-item-name">Black Coffee</div></div><div class="menu-item-price">₹30</div></div>
+      <div class="menu-card"><div class="menu-item-info"><div class="menu-item-name">Green Tea</div></div><div class="menu-item-price">₹30</div></div>
+      <div class="menu-card"><div class="menu-item-info"><div class="menu-item-name">Lemonade</div></div><div class="menu-item-price">₹30</div></div>
+      <div class="menu-card"><div class="menu-item-info"><div class="menu-item-name">Cold Coffee</div></div><div class="menu-item-price">₹50</div></div>
     </div>
+  </div>
 
-  </div><!-- /menu-grid -->
+  <!-- Individual categories -->
+  <div id="cat-breakfast" class="menu-category">
+    <div class="cat-title">🌅 Breakfast &amp; Quick Bites</div>
+    <div class="menu-grid">
+      <div class="menu-card"><div class="menu-item-info"><div class="menu-item-name">Poha</div><div class="menu-item-sub">Light &amp; fluffy breakfast</div></div><div class="menu-item-price">₹50</div></div>
+      <div class="menu-card"><div class="menu-item-info"><div class="menu-item-name">Palak Paratha</div><div class="menu-item-sub">Spinach flatbread</div></div><div class="menu-item-price">₹50</div></div>
+    </div>
+  </div>
 
-  <div class="menu-note-bar">
-    ➕ Customise any item with Add-ons for just <strong>₹30</strong> &nbsp;|&nbsp; 🧒 Kids' Menu Available &nbsp;|&nbsp; ⏱ Prep Time: 15–20 Minutes
+  <div id="cat-fries" class="menu-category">
+    <div class="cat-title">🍟 Fries</div>
+    <div class="menu-grid">
+      <div class="menu-card"><div class="menu-item-info"><div class="menu-item-name">Classic Fries</div><div class="menu-item-sub">Crispy &amp; golden</div></div><div class="menu-item-price">₹50</div></div>
+      <div class="menu-card"><div class="menu-item-info"><div class="menu-item-name">Peri Peri Fries<span class="best-seller-badge">🔥 Best Seller</span></div><div class="menu-item-sub">Spicy &amp; tangy kick</div></div><div class="menu-item-price">₹70</div></div>
+    </div>
+  </div>
+
+  <div id="cat-sandwiches" class="menu-category">
+    <div class="cat-title">🥪 Sandwiches</div>
+    <div class="menu-grid">
+      <div class="menu-card"><div class="menu-item-info"><div class="menu-item-name">Peanut Butter</div></div><div class="menu-item-price">₹60</div></div>
+      <div class="menu-card"><div class="menu-item-info"><div class="menu-item-name">Grilled Veg</div></div><div class="menu-item-price">₹50</div></div>
+      <div class="menu-card"><div class="menu-item-info"><div class="menu-item-name">Grilled Veg Cheese</div></div><div class="menu-item-price">₹60</div></div>
+      <div class="menu-card"><div class="menu-item-info"><div class="menu-item-name">Grilled Paneer</div></div><div class="menu-item-price">₹70</div></div>
+      <div class="menu-card"><div class="menu-item-info"><div class="menu-item-name">Grilled Paneer Cheese</div></div><div class="menu-item-price">₹80</div></div>
+    </div>
+  </div>
+
+  <div id="cat-twisters" class="menu-category">
+    <div class="cat-title">🌯 Twisters</div>
+    <div class="menu-grid">
+      <div class="menu-card"><div class="menu-item-info"><div class="menu-item-name">Masala Twister</div></div><div class="menu-item-price">₹70</div></div>
+      <div class="menu-card"><div class="menu-item-info"><div class="menu-item-name">Cheese Twister</div></div><div class="menu-item-price">₹90</div></div>
+      <div class="menu-card"><div class="menu-item-info"><div class="menu-item-name">Mayo Twister</div></div><div class="menu-item-price">₹90</div></div>
+    </div>
+  </div>
+
+  <div id="cat-rice" class="menu-category">
+    <div class="cat-title">🍚 Rice Specials</div>
+    <div class="menu-grid">
+      <div class="menu-card"><div class="menu-item-info"><div class="menu-item-name">Veg Fried Rice</div></div><div class="menu-item-price">₹50</div></div>
+      <div class="menu-card"><div class="menu-item-info"><div class="menu-item-name">Paneer Rice</div></div><div class="menu-item-price">₹70</div></div>
+    </div>
+  </div>
+
+  <div id="cat-maggi" class="menu-category">
+    <div class="cat-title">🍜 Maggi Specials</div>
+    <div class="menu-grid">
+      <div class="menu-card"><div class="menu-item-info"><div class="menu-item-name">Butter Masala Maggi</div></div><div class="menu-item-price">₹50</div></div>
+      <div class="menu-card"><div class="menu-item-info"><div class="menu-item-name">Vegetable Maggi</div></div><div class="menu-item-price">₹60</div></div>
+      <div class="menu-card"><div class="menu-item-info"><div class="menu-item-name">Cheese Maggi<span class="best-seller-badge">🔥 Best Seller</span></div></div><div class="menu-item-price">₹70</div></div>
+      <div class="menu-card"><div class="menu-item-info"><div class="menu-item-name">Paneer Maggi</div></div><div class="menu-item-price">₹70</div></div>
+    </div>
+  </div>
+
+  <div id="cat-momos" class="menu-category">
+    <div class="cat-title">🥟 Momos (6 Pcs)</div>
+    <div class="menu-grid">
+      <div class="menu-card"><div class="menu-item-info"><div class="menu-item-name">Veg Momos – Steam</div></div><div class="menu-item-price">₹70</div></div>
+      <div class="menu-card"><div class="menu-item-info"><div class="menu-item-name">Veg Momos – Fry</div></div><div class="menu-item-price">₹80</div></div>
+      <div class="menu-card"><div class="menu-item-info"><div class="menu-item-name">Paneer Momos – Steam</div></div><div class="menu-item-price">₹80</div></div>
+      <div class="menu-card"><div class="menu-item-info"><div class="menu-item-name">Paneer Momos – Fry</div></div><div class="menu-item-price">₹90</div></div>
+    </div>
+  </div>
+
+  <div id="cat-waffles" class="menu-category">
+    <div class="cat-title">🧇 Waffles</div>
+    <div class="menu-grid">
+      <div class="menu-card"><div class="menu-item-info"><div class="menu-item-name">Single Chocolate</div></div><div class="menu-item-price">₹60</div></div>
+      <div class="menu-card"><div class="menu-item-info"><div class="menu-item-name">Double Chocolate</div></div><div class="menu-item-price">₹80</div></div>
+      <div class="menu-card"><div class="menu-item-info"><div class="menu-item-name">Triple Chocolate<span class="best-seller-badge">🔥 Best Seller</span></div></div><div class="menu-item-price">₹100</div></div>
+    </div>
+  </div>
+
+  <div id="cat-beverages" class="menu-category">
+    <div class="cat-title">☕ Beverages</div>
+    <div class="menu-grid">
+      <div class="menu-card"><div class="menu-item-info"><div class="menu-item-name">Black Coffee</div></div><div class="menu-item-price">₹30</div></div>
+      <div class="menu-card"><div class="menu-item-info"><div class="menu-item-name">Green Tea</div></div><div class="menu-item-price">₹30</div></div>
+      <div class="menu-card"><div class="menu-item-info"><div class="menu-item-name">Lemonade</div></div><div class="menu-item-price">₹30</div></div>
+      <div class="menu-card"><div class="menu-item-info"><div class="menu-item-name">Cold Coffee</div></div><div class="menu-item-price">₹50</div></div>
+    </div>
   </div>
 </section>
 
-<!-- ABOUT -->
-<section id="about">
-  <div class="about-grid">
-    <div class="about-emoji-block">
-      <div class="about-card">
-        <div class="emoji">🌿</div>
-        <h4>100% Pure Veg</h4>
-        <p>No meat, no compromise. Every item is purely vegetarian.</p>
-      </div>
-      <div class="about-card">
-        <div class="emoji">👨‍👩‍👧</div>
-        <h4>Family Oriented</h4>
-        <p>A welcoming spot for families, students &amp; friends alike.</p>
-      </div>
-      <div class="about-card">
-        <div class="emoji">⚡</div>
-        <h4>Fast Service</h4>
-        <p>Food ready in just 15–20 minutes. No long waits!</p>
-      </div>
-      <div class="about-card">
-        <div class="emoji">🧒</div>
-        <h4>Kids' Menu</h4>
-        <p>Special choices crafted to make little ones happy.</p>
-      </div>
-      <div class="about-card featured">
-        <div class="emoji">📍</div>
-        <h4>Near Page Junior College, Himayatnagar</h4>
-        <p>Conveniently located — easy to find, hard to forget!</p>
-      </div>
-    </div>
-
-    <div class="about-text">
-      <div class="section-tag">🌱 Our Story</div>
-      <h2 class="section-title">Taste the <span class="o">Freshness</span> in Every Bite</h2>
-      <p style="color:#777; font-size:1rem; line-height:1.7; margin: 1rem 0;">
-        Tasty Route is Himayatnagar's favourite pure vegetarian eatery — a cosy stop for students, families, and food lovers looking for fresh, fast, and flavourful meals without the fuss.
-      </p>
-      <p style="color:#777; font-size:1rem; line-height:1.7; margin-bottom: 1.5rem;">
-        From crispy Peri Peri Fries to dreamy Triple Chocolate Waffles, every dish is made with care and served with a smile — right in the heart of the neighbourhood.
-      </p>
-      <ul class="about-list">
-        <li>Freshly prepared food every single time</li>
-        <li>Budget-friendly prices starting at just ₹30</li>
-        <li>Customisable add-ons for every taste</li>
-        <li>Open till 11:00 PM — perfect for late-night cravings</li>
-      </ul>
-      <a href="#contact" class="btn-primary" style="margin-top: 1.5rem; display: inline-flex;">📍 Visit Us Today</a>
-    </div>
+<!-- SPECIALS BANNER -->
+<div class="specials-banner">
+  <h2>✨ Special Offers &amp; Features</h2>
+  <p>Something extra for every visit to Tasty Route</p>
+  <div class="specials-pills">
+    <div class="pill">🌿 100% Pure Veg</div>
+    <div class="pill">👨‍👩‍👧 Kids' Menu</div>
+    <div class="pill">➕ Add-Ons @ ₹30</div>
+    <div class="pill">⚡ 15–20 Min Ready</div>
+    <div class="pill">🕙 Open till 11 PM</div>
   </div>
-</section>
-
-<!-- HOURS BAND -->
-<div class="hours-band">
-  <div class="hours-inner">
-    <div class="hour-stat">
-      <div class="label">Open Till</div>
-      <div class="val">🕙 11:00 PM</div>
-    </div>
-    <div class="hour-divider"></div>
-    <div class="hour-stat">
-      <div class="label">Order Prep Time</div>
-      <div class="val">⏱ 15–20 Mins</div>
-    </div>
-    <div class="hour-divider"></div>
-    <div class="hour-stat">
-      <div class="label">Add-ons</div>
-      <div class="val">➕ Just ₹30</div>
-    </div>
-    <div class="hour-divider"></div>
-    <div class="hour-stat">
-      <div class="label">Cuisine</div>
-      <div class="val">🌿 Pure Veg</div>
-    </div>
+  <div class="banner-ctas">
+    <a href="#menu" class="btn-white">🍽️ View Full Menu</a>
+    <a href="#contact" class="btn-outline-white">📍 Visit Us Today</a>
   </div>
 </div>
 
-<!-- CONTACT -->
-<section id="contact">
-  <div style="text-align:center; margin-bottom: 3rem;">
-    <div class="section-tag">📍 Find Us</div>
-    <h2 class="section-title">Come <span class="o">Visit</span> Us!</h2>
-    <p class="section-sub" style="margin: 0 auto;">We're just around the corner. Drop in any time before 11 PM!</p>
-  </div>
-
-  <div class="contact-grid">
-    <div class="contact-info-card">
-      <h3>🍽 Tasty Route</h3>
-
-      <div class="contact-row">
-        <div class="contact-icon">📍</div>
-        <div class="contact-detail">
-          <strong>Address</strong>
-          <span>Street No. 18, AP State Housing Board,<br>Himayatnagar, Hyderabad</span>
-        </div>
+<!-- ABOUT SECTION -->
+<section id="about">
+  <div class="about-grid">
+    <div class="about-img-col reveal">
+      <div class="about-main-card">🥗</div>
+      <div class="about-float-1">
+        <div class="af-num">100%</div>
+        <div class="af-label">Pure Veg</div>
       </div>
-
-      <div class="contact-row">
-        <div class="contact-icon">📞</div>
-        <div class="contact-detail">
-          <strong>Phone</strong>
-          <span>093465 15436</span>
-        </div>
+      <div class="about-float-2">
+        <div class="af-num">11 PM</div>
+        <div class="af-label">Open Till</div>
       </div>
-
-      <div class="contact-row">
-        <div class="contact-icon">🕙</div>
-        <div class="contact-detail">
-          <strong>Closing Time</strong>
-          <span>Open until 11:00 PM</span>
-        </div>
-      </div>
-
-      <div class="contact-row">
-        <div class="contact-icon">⏱</div>
-        <div class="contact-detail">
-          <strong>Prep Time</strong>
-          <span>15–20 minutes after order</span>
-        </div>
-      </div>
-
-      <a href="tel:09346515436" class="call-btn">📞 Call Now — 093465 15436</a>
     </div>
+    <div class="about-content reveal reveal-delay-1">
+      <div class="section-tag">About Us</div>
+      <h2 class="section-title">A <span class="accent">Family-Friendly</span> Spot in Himayatnagar</h2>
+      <p>Tasty Route is your go-to pure vegetarian restaurant nestled in the heart of Himayatnagar, Hyderabad — conveniently close to Page Junior College. We believe great food should be fresh, fast, and full of flavour.</p>
+      <p>From hearty breakfast bites to indulgent waffles and refreshing beverages, our menu is crafted to satisfy every craving. Whether you're stopping in after college, bringing the family, or just need a quick, delicious meal — we've got you covered.</p>
+      <div class="about-features">
+        <div class="af-item"><span class="icon">🌿</span> Pure Veg Menu</div>
+        <div class="af-item"><span class="icon">👨‍👩‍👧</span> Kids' Menu</div>
+        <div class="af-item"><span class="icon">⚡</span> Fast Service</div>
+        <div class="af-item"><span class="icon">✨</span> Fresh Daily</div>
+        <div class="af-item"><span class="icon">📍</span> Near Page Jr College</div>
+        <div class="af-item"><span class="icon">➕</span> Add-Ons ₹30</div>
+      </div>
+      <div class="hours-card">
+        <div class="hours-left">
+          <div class="label">We're Open Until</div>
+          <div class="time">11:00 PM Daily</div>
+        </div>
+        <div class="hours-right">🕙</div>
+      </div>
+    </div>
+  </div>
+</section>
 
-    <div class="map-container">
-      <iframe
-        src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3807.4734905741044!2d78.47469!3d17.39580!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3bcb972a95555555%3A0x0!2sHimayatnagar%2C+Hyderabad%2C+Telangana!5e0!3m2!1sen!2sin!4v1700000000000"
-        allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade">
-      </iframe>
-      <div class="map-footer">📍 Street No. 18, AP State Housing Board, Himayatnagar</div>
+<!-- CONTACT SECTION -->
+<section id="contact">
+  <div class="section-header reveal">
+    <div class="section-tag">Find Us</div>
+    <h2 class="section-title">Come Visit <span class="accent">Tasty Route</span></h2>
+    <p class="section-sub">We're easy to find in Himayatnagar, Hyderabad. Drop in or call ahead!</p>
+  </div>
+  <div class="contact-grid">
+    <div class="contact-info-col reveal">
+      <div class="contact-cards">
+        <a href="tel:09346515436" class="contact-card">
+          <div class="contact-icon ci-orange">📞</div>
+          <div>
+            <div class="contact-card-label">Phone</div>
+            <div class="contact-card-val">093465 15436</div>
+          </div>
+        </a>
+        <div class="contact-card">
+          <div class="contact-icon ci-green">📍</div>
+          <div>
+            <div class="contact-card-label">Address</div>
+            <div class="contact-card-val">Street No. 18, AP State Housing Board,<br>Himayatnagar, Hyderabad</div>
+          </div>
+        </div>
+        <div class="contact-card">
+          <div class="contact-icon ci-yellow">🕙</div>
+          <div>
+            <div class="contact-card-label">Hours</div>
+            <div class="contact-card-val">Open Daily — Closes at 11:00 PM</div>
+          </div>
+        </div>
+        <div class="contact-card">
+          <div class="contact-icon ci-orange">⚡</div>
+          <div>
+            <div class="contact-card-label">Order Preparation Time</div>
+            <div class="contact-card-val">15 – 20 Minutes</div>
+          </div>
+        </div>
+      </div>
+      <a href="tel:09346515436" class="call-btn">
+        📞 &nbsp;Call to Order: 093465 15436
+      </a>
+    </div>
+    <div class="map-col reveal reveal-delay-1">
+      <div class="map-frame">
+        <iframe
+          src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3806.847!2d78.4983!3d17.3999!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3bcb99daeaebd2c3%3A0xae93b78392bafbc2!2sHimayatnagar%2C+Hyderabad!5e0!3m2!1sen!2sin!4v1"
+          allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade">
+        </iframe>
+      </div>
+      <div class="map-overlay-info">
+        📌 &nbsp;Street No. 18, AP State Housing Board, Himayatnagar, Hyderabad — Near Page Junior College
+      </div>
     </div>
   </div>
 </section>
 
 <!-- FOOTER -->
 <footer>
-  <div class="footer-logo">🌿 Tasty <span>Route</span></div>
-  <div class="footer-tagline">Fresh · Fast · Delicious — Himayatnagar's Favourite Pure Veg Stop</div>
-  <ul class="footer-links">
-    <li><a href="#home">Home</a></li>
-    <li><a href="#menu">Menu</a></li>
-    <li><a href="#about">About Us</a></li>
-    <li><a href="#contact">Contact</a></li>
-    <li><a href="tel:09346515436">📞 Call Us</a></li>
-  </ul>
+  <div class="footer-grid">
+    <div class="footer-brand">
+      <a href="#home" class="nav-logo">
+        <div class="logo-icon" style="background:var(--orange)">🍴</div>
+        Tasty <span>Route</span>
+      </a>
+      <p>Fresh, Fast &amp; Delicious vegetarian food in the heart of Himayatnagar, Hyderabad. A place where every bite tells a story.</p>
+      <div class="pure-veg-badge" style="margin-top:14px">
+        <div class="veg-dot"></div>
+        100% Pure Vegetarian
+      </div>
+    </div>
+    <div class="footer-col">
+      <h4>Quick Links</h4>
+      <ul>
+        <li><a href="#home">🏠 Home</a></li>
+        <li><a href="#menu">🍽️ Menu</a></li>
+        <li><a href="#about">💚 About Us</a></li>
+        <li><a href="#contact">📍 Contact</a></li>
+      </ul>
+    </div>
+    <div class="footer-col">
+      <h4>Contact Info</h4>
+      <ul>
+        <li>📞 093465 15436</li>
+        <li>📍 Street No. 18, AP State Housing Board, Himayatnagar, Hyderabad</li>
+        <li>🕙 Open till 11:00 PM daily</li>
+        <li>⚡ Prep: 15–20 minutes</li>
+      </ul>
+    </div>
+  </div>
   <div class="footer-bottom">
-    © 2025 Tasty Route, Himayatnagar, Hyderabad &nbsp;|&nbsp; <span class="veg-badge">🟢 Pure Veg</span> &nbsp;|&nbsp; Open till 11:00 PM
+    <p>© 2025 Tasty Route – A Place To Eat. All rights reserved.</p>
+    <p style="color:rgba(255,255,255,.3)">Made with 🧡 in Hyderabad</p>
   </div>
 </footer>
 
 <script>
-  function showCategory(cat) {
-    document.querySelectorAll('.tab-btn').forEach(b => b.classList.remove('active'));
-    event.target.classList.add('active');
-    document.querySelectorAll('.menu-category').forEach(c => {
-      if (cat === 'all' || c.dataset.cat === cat) {
-        c.classList.add('active');
-      } else {
-        c.classList.remove('active');
-      }
-    });
+  // NAV SCROLL
+  const nav = document.getElementById('navbar');
+  window.addEventListener('scroll', () => {
+    nav.classList.toggle('scrolled', window.scrollY > 10);
+  });
+
+  // MOBILE MENU
+  function toggleMenu() {
+    document.getElementById('mobileMenu').classList.toggle('open');
   }
+
+  // MENU TABS
+  const cats = ['all','breakfast','fries','sandwiches','twisters','rice','maggi','momos','waffles','beverages'];
+  function showCategory(cat) {
+    cats.forEach(c => {
+      const el = document.getElementById('cat-' + c);
+      if (el) el.classList.remove('visible');
+    });
+    const target = document.getElementById('cat-' + cat);
+    if (target) target.classList.add('visible');
+    document.querySelectorAll('.tab-btn').forEach(btn => btn.classList.remove('active'));
+    event.target.classList.add('active');
+  }
+
+  // SCROLL REVEAL
+  const reveals = document.querySelectorAll('.reveal');
+  const io = new IntersectionObserver((entries) => {
+    entries.forEach(e => {
+      if (e.isIntersecting) { e.target.classList.add('shown'); io.unobserve(e.target); }
+    });
+  }, { threshold: 0.12 });
+  reveals.forEach(el => io.observe(el));
 </script>
 </body>
 </html>
